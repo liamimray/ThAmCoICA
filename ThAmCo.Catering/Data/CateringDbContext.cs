@@ -34,8 +34,6 @@ namespace ThAmCo.Catering.Data
         {
             base.OnModelCreating(builder);
 
-            // Configure primary keys and relationships using Fluent API
-
             // FoodBooking primary key and foreign key to Menu
             builder.Entity<FoodBooking>()
                    .HasKey(fb => fb.FoodBookingId);
@@ -53,6 +51,7 @@ namespace ThAmCo.Catering.Data
             builder.Entity<MenuFoodItem>()
                    .HasKey(mf => new { mf.MenuId, mf.FoodItemId });
 
+            // Configure relationships for MenuFoodItem
             builder.Entity<MenuFoodItem>()
                    .HasOne(mf => mf.Menu)
                    .WithMany(m => m.MenuFoodItems)

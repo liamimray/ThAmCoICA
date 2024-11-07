@@ -1,15 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ThAmCo.Catering.Data;
 
-namespace ThAmCo.Catering.Data
+public class Menu
 {
-    public class Menu
-    {
-        public int MenuId { get; set; }
-        [MaxLength(50)]
-        public string MenuName { get; set; }
+    public int MenuId { get; set; }
+    public string MenuName { get; set; }
 
-        //Navigation Properties
-        public ICollection<MenuFoodItem> MenuFoodItems { get; set; }
-        public ICollection<FoodBooking> FoodBookings { get; set; }
-    }
+    public ICollection<MenuFoodItem> MenuFoodItems { get; set; }
+    public ICollection<FoodBooking> FoodBookings { get; set; }
 }
