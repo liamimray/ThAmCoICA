@@ -1,8 +1,11 @@
-﻿namespace ThAmCo.Catering.Data
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ThAmCo.Catering.Data
 {
     public class FoodItem
     {
         public required int FoodItemId { get; set; }
+        [MaxLength(50)]
         public string Description { get; set; }
         public float UnitPrice { get; set; }
 

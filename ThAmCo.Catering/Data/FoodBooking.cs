@@ -9,5 +9,8 @@ namespace ThAmCo.Catering.Data
         public int ClientReferenceId { get; set; }
         public int NumberOfGuests { get; set; }
         public int MenuId { get; set; }
+
+        //Navigation Property
+        public Menu Menu { get; set; }
     }
 }
