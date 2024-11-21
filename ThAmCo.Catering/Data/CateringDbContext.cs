@@ -51,6 +51,18 @@ namespace ThAmCo.Catering.Data
             builder.Entity<MenuFoodItem>()
                    .HasKey(mf => new { mf.MenuId, mf.FoodItemId });
 
+
+            // FoodItem primary key
+            builder.Entity<FoodItem>()
+                   .HasKey(fi => fi.FoodItemId);
+
+            builder.Entity<FoodItem>()
+                   .HasMany(mfi => mfi.MenuFoodItems)
+                   .WithOne(m => m.FoodItem)
+                   .HasForeignKey(mfi => mfi.FoodItemId);
+
+            /*
+
             // Configure relationships for MenuFoodItem
             builder.Entity<MenuFoodItem>()
                    .HasOne(mf => mf.Menu)
@@ -62,9 +74,9 @@ namespace ThAmCo.Catering.Data
                    .WithMany(fi => fi.MenuFoodItems)
                    .HasForeignKey(mf => mf.FoodItemId);
 
-            // FoodItem primary key
-            builder.Entity<FoodItem>()
-                   .HasKey(fi => fi.FoodItemId);
+            */
+
+
 
             // Seed data for development environments
             if (_hostEnv != null && _hostEnv.IsDevelopment())

@@ -7,17 +7,17 @@ using ThAmCo.Catering.Data;
 
 #nullable disable
 
-namespace ThAmCo.Catering.Data.Migrations
+namespace ThAmCo.Catering.Migrations
 {
     [DbContext(typeof(CateringDbContext))]
-    [Migration("20241107153758_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241121135718_Initial create")]
+    partial class Initialcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
 
             modelBuilder.Entity("FoodBooking", b =>
                 {
@@ -63,6 +63,9 @@ namespace ThAmCo.Catering.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("FoodBookingId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("MenuName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -75,11 +78,13 @@ namespace ThAmCo.Catering.Data.Migrations
                         new
                         {
                             MenuId = 1,
+                            FoodBookingId = 0,
                             MenuName = "Standard Menu"
                         },
                         new
                         {
                             MenuId = 2,
+                            FoodBookingId = 0,
                             MenuName = "Premium Menu"
                         });
                 });

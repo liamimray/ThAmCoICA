@@ -4,10 +4,10 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace ThAmCo.Catering.Data.Migrations
+namespace ThAmCo.Catering.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,8 @@ namespace ThAmCo.Catering.Data.Migrations
                 {
                     MenuId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    MenuName = table.Column<string>(type: "TEXT", nullable: false)
+                    MenuName = table.Column<string>(type: "TEXT", nullable: false),
+                    FoodBookingId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,11 +97,11 @@ namespace ThAmCo.Catering.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Menus",
-                columns: new[] { "MenuId", "MenuName" },
+                columns: new[] { "MenuId", "FoodBookingId", "MenuName" },
                 values: new object[,]
                 {
-                    { 1, "Standard Menu" },
-                    { 2, "Premium Menu" }
+                    { 1, 0, "Standard Menu" },
+                    { 2, 0, "Premium Menu" }
                 });
 
             migrationBuilder.InsertData(

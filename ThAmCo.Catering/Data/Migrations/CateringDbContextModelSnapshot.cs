@@ -6,7 +6,7 @@ using ThAmCo.Catering.Data;
 
 #nullable disable
 
-namespace ThAmCo.Catering.Data.Migrations
+namespace ThAmCo.Catering.Migrations
 {
     [DbContext(typeof(CateringDbContext))]
     partial class CateringDbContextModelSnapshot : ModelSnapshot
@@ -14,7 +14,7 @@ namespace ThAmCo.Catering.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
 
             modelBuilder.Entity("FoodBooking", b =>
                 {
@@ -35,7 +35,7 @@ namespace ThAmCo.Catering.Data.Migrations
 
                     b.HasIndex("MenuId");
 
-                    b.ToTable("FoodBookings");
+                    b.ToTable("FoodBookings", (string)null);
 
                     b.HasData(
                         new
@@ -60,23 +60,28 @@ namespace ThAmCo.Catering.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("FoodBookingId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("MenuName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("MenuId");
 
-                    b.ToTable("Menus");
+                    b.ToTable("Menus", (string)null);
 
                     b.HasData(
                         new
                         {
                             MenuId = 1,
+                            FoodBookingId = 0,
                             MenuName = "Standard Menu"
                         },
                         new
                         {
                             MenuId = 2,
+                            FoodBookingId = 0,
                             MenuName = "Premium Menu"
                         });
                 });
@@ -93,7 +98,7 @@ namespace ThAmCo.Catering.Data.Migrations
 
                     b.HasIndex("FoodItemId");
 
-                    b.ToTable("MenuFoodItems");
+                    b.ToTable("MenuFoodItems", (string)null);
 
                     b.HasData(
                         new
@@ -134,7 +139,7 @@ namespace ThAmCo.Catering.Data.Migrations
 
                     b.HasKey("FoodItemId");
 
-                    b.ToTable("FoodItems");
+                    b.ToTable("FoodItems", (string)null);
 
                     b.HasData(
                         new
