@@ -47,6 +47,11 @@ namespace ThAmCo.Catering.Data
             builder.Entity<Menu>()
                    .HasKey(m => m.MenuId);
 
+            builder.Entity<Menu>()
+                   .HasMany(mfi => mfi.MenuFoodItems)
+                   .WithOne(m => m.Menu)
+                   .HasForeignKey(mfi => mfi.MenuId);
+
             // MenuFoodItem composite key (MenuId, FoodItemId)
             builder.Entity<MenuFoodItem>()
                    .HasKey(mf => new { mf.MenuId, mf.FoodItemId });
