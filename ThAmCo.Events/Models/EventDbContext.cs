@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ThAmCo.Events.Data
+namespace ThAmCo.Events.Models
 {
     public class EventsDbContext : DbContext
     {

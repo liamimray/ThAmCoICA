@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ThAmCo.Events.Models;
 
-namespace ThAmCo.Events.Pages.Staffs
+namespace ThAmCo.Events.Pages.Guests
 {
     public class CreateModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Pages.Staffs
         }
 
         [BindProperty]
-        public Staff Staff { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace ThAmCo.Events.Pages.Staffs
                 return Page();
             }
 
-            _context.StaffMembers.Add(Staff);
+            _context.Guests.Add(Guest);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
