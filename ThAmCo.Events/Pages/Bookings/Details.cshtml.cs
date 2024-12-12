@@ -11,9 +11,9 @@ namespace ThAmCo.Events.Pages.Bookings
 {
     public class DetailsModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public DetailsModel(ThAmCo.Events.Models.EventsDbContext context)
+        public DetailsModel(EventsDbContext context)
         {
             _context = context;
         }

@@ -11,9 +11,9 @@ namespace ThAmCo.Events.Pages.Bookings
 {
     public class DeleteModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public DeleteModel(ThAmCo.Events.Models.EventsDbContext context)
+        public DeleteModel(EventsDbContext context)
         {
             _context = context;
         }

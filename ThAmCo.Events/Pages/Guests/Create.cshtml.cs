@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using ThAmCo.Events.Models;
 
 namespace ThAmCo.Events.Pages.Guests
@@ -18,15 +17,14 @@ namespace ThAmCo.Events.Pages.Guests
             _context = context;
         }
 
+        [BindProperty]
+        public Guest Guest { get; set; } = default!;
+
         public IActionResult OnGet()
         {
             return Page();
         }
 
-        [BindProperty]
-        public Guest Guest { get; set; } = default!;
-
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

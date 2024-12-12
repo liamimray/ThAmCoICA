@@ -11,9 +11,9 @@ namespace ThAmCo.Events.Pages.EventsList
 {
     public class CreateModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public CreateModel(ThAmCo.Events.Models.EventsDbContext context)
+        public CreateModel(EventsDbContext context)
         {
             _context = context;
         }

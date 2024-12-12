@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,11 +18,11 @@ namespace ThAmCo.Events.Pages.Guests
             _context = context;
         }
 
-        public IList<Guest> Guest { get;set; } = default!;
+        public IList<Guest> Guests { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Guest = await _context.Guests.ToListAsync();
+            Guests = await _context.Guests.ToListAsync();
         }
     }
 }

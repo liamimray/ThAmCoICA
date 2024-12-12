@@ -10,9 +10,9 @@ namespace ThAmCo.Events.Pages.EventsList
 {
     public class IndexModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public IndexModel(ThAmCo.Events.Models.EventsDbContext context)
+        public IndexModel(EventsDbContext context)
         {
             _context = context;
         }
@@ -33,7 +33,7 @@ namespace ThAmCo.Events.Pages.EventsList
                     IsCancelled = e.IsCancelled,
                     VenueId = e.VenueId,
                     TotalBookings = e.GuestBookings.Count(),
-                    ConfirmedAttendees = e.GuestBookings.Count(gb => gb.Guest.IsAttending)
+                    ConfirmedAttendees = e.GuestBookings.Count(gb => gb.IsAttending)
                 })
                 .ToListAsync();
         }

@@ -11,9 +11,9 @@ namespace ThAmCo.Events.Pages.Bookings
 {
     public class IndexModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public IndexModel(ThAmCo.Events.Models.EventsDbContext context)
+        public IndexModel(EventsDbContext context)
         {
             _context = context;
         }

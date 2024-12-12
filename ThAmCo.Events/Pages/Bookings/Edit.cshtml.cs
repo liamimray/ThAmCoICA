@@ -12,9 +12,9 @@ namespace ThAmCo.Events.Pages.Bookings
 {
     public class EditModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public EditModel(ThAmCo.Events.Models.EventsDbContext context)
+        public EditModel(EventsDbContext context)
         {
             _context = context;
         }

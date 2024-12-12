@@ -11,16 +11,15 @@ namespace ThAmCo.Events.Pages.EventsList
 {
     public class DetailsModel : PageModel
     {
-        private readonly ThAmCo.Events.Models.EventsDbContext _context;
+        private readonly EventsDbContext _context;
 
-        public DetailsModel(ThAmCo.Events.Models.EventsDbContext context)
+        public DetailsModel(EventsDbContext context)
         {
             _context = context;
         }
 
         public Event Event { get; set; } = default!;
-        public List<Guest> Attendees { get; set; } = new List<Guest>();
-        public int TotalAttendees => Attendees.Count(a => a.IsAttending);
+        public List<GuestBooking> Attendees { get; set; } = new List<GuestBooking>();
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,7 +38,7 @@ namespace ThAmCo.Events.Pages.EventsList
                 return NotFound();
             }
 
-            Attendees = Event.GuestBookings.Select(gb => gb.Guest).ToList();
+            Attendees = Event.GuestBookings.ToList();
 
             return Page();
         }
@@ -53,7 +52,6 @@ namespace ThAmCo.Events.Pages.EventsList
 
             Event = await _context.Events
                 .Include(e => e.GuestBookings)
-                .ThenInclude(gb => gb.Guest)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Event == null)
@@ -61,10 +59,10 @@ namespace ThAmCo.Events.Pages.EventsList
                 return NotFound();
             }
 
-            var guest = await _context.Guests.FindAsync(guestId);
-            if (guest != null)
+            var guestBooking = Event.GuestBookings.FirstOrDefault(gb => gb.GuestId == guestId);
+            if (guestBooking != null)
             {
-                guest.IsAttending = isAttending;
+                guestBooking.IsAttending = isAttending;
                 await _context.SaveChangesAsync();
             }
 
