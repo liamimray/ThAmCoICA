@@ -1,0 +1,26 @@
+﻿@page ""
+@model ThAmCo.Events.Pages.EventsList.EditModel
+
+<h2>Edit Event</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="EventDto.Title" class="control-label"></label>
+        <input asp-for="EventDto.Title" class="form-control" />
+        <span asp-validation-for="EventDto.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EventDto.VenueId" class="control-label"></label>
+        <input asp-for="EventDto.VenueId" class="form-control" />
+        <span asp-validation-for="EventDto.VenueId" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

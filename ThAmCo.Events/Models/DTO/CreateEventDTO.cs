@@ -6,7 +6,6 @@
         public DateTime Date { get; set; }
         public string EventType { get; set; }
         public bool IsCancelled { get; set; } = false;
-
         public int? VenueId { get; set; } // Assume nullable in case venue reservation is optional
     }
 }

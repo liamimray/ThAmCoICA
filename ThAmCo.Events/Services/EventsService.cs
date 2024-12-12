@@ -8,7 +8,7 @@ using ThAmCo.Events.Repositories.Interfaces;
 
 namespace ThAmCo.Events.Services
 {
-    public class 
+    public class EventsService
 
     {
         private readonly HttpClient _httpClient; // Private property for the HttpClient object.
