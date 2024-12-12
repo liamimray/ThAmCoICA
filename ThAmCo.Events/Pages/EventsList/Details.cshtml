@@ -48,12 +48,14 @@
 <div>
     <h4>Attendees</h4>
     <hr />
+    <p>Total Attendees: @Model.TotalAttendees</p>
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Is Attending</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -62,7 +64,21 @@
                 <tr>
                     <td>@attendee.Name</td>
                     <td>@attendee.Email</td>
-                    <td>@attendee.IsAttending</td>
+                    <td>@(attendee.IsAttending ? "Yes" : "No")</td>
+                    <td>
+                        <form method="post" asp-page-handler="RegisterAttendance">
+                            <input type="hidden" name="id" value="@Model.Event.Id" />
+                            <input type="hidden" name="guestId" value="@attendee.Id" />
+                            <input type="hidden" name="isAttending" value="true" />
+                            <button type="submit" class="btn btn-success">Mark as Attending</button>
+                        </form>
+                        <form method="post" asp-page-handler="RegisterAttendance">
+                            <input type="hidden" name="id" value="@Model.Event.Id" />
+                            <input type="hidden" name="guestId" value="@attendee.Id" />
+                            <input type="hidden" name="isAttending" value="false" />
+                            <button type="submit" class="btn btn-danger">Mark as Not Attending</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
