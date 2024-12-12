@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Models;
 
-namespace ThAmCo.Events.Pages.EventsList
+namespace ThAmCo.Events.Pages.Bookings
 {
     public class DetailsModel : PageModel
     {
@@ -18,8 +18,7 @@ namespace ThAmCo.Events.Pages.EventsList
             _context = context;
         }
 
-        public Event Event { get; set; } = default!;
-        public List<Guest> Attendees { get; set; } = new List<Guest>();
+        public GuestBooking GuestBooking { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,18 +27,15 @@ namespace ThAmCo.Events.Pages.EventsList
                 return NotFound();
             }
 
-            Event = await _context.Events
-                .Include(e => e.GuestBookings)
-                .ThenInclude(gb => gb.Guest)
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Event == null)
+            var guestbooking = await _context.GuestBookings.FirstOrDefaultAsync(m => m.EventId == id);
+            if (guestbooking == null)
             {
                 return NotFound();
             }
-
-            Attendees = Event.GuestBookings.Select(gb => gb.Guest).ToList();
-
+            else
+            {
+                GuestBooking = guestbooking;
+            }
             return Page();
         }
     }

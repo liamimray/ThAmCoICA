@@ -1,0 +1,38 @@
+﻿@page
+@model ThAmCo.Events.Pages.Bookings.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GuestBooking</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestBooking.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestBooking.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestBooking.Event)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestBooking.Event.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestBooking.Guest)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestBooking.Guest.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-page="./Index">Back to List</a>
+</div>

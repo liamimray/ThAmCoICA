@@ -44,6 +44,31 @@
         </dd>
     </dl>
 </div>
+
+<div>
+    <h4>Attendees</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Is Attending</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attendee in Model.Attendees)
+            {
+                <tr>
+                    <td>@attendee.Name</td>
+                    <td>@attendee.Email</td>
+                    <td>@attendee.IsAttending</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Event.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
